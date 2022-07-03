@@ -1,0 +1,6 @@
+com\engsoft\arqsoft\trab1\Publications.class
+com\bdyu\sopacommunication\publicationsws\PubWS.class
+com\engsoft\arqsoft\trab1\Publication.class
+com\engsoft\arqsoft\trab1\Author.class
+com\bdyu\sopacommunication\publicationsws\JAXRSConfiguration.class
+com\bdyu\sopacommunication\publicationsws\resources\JavaEE8Resource.class
