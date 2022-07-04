@@ -39,15 +39,6 @@ public class Author {
     public void setName(String sName) {
         this.pName = sName;
     }
-
-    public void addPublication(int sPublicationID) {
-        
-        int tCountPublication;
-        
-        tCountPublication = this.pPublications.length;
-        
-        this.pPublications[tCountPublication] = sPublicationID;
-    }
     
     public Author(int sID, String sCPF, String sName) {
         this.pID = sID;

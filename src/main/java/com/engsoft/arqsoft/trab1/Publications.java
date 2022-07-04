@@ -20,30 +20,61 @@ public class Publications {
         pAuthorList.add(tAuthor);
     }
     
-    public void addAuthorList(String sCPF, String sName) {
+    public void addAuthorList(String sCPF, String sName, int[] sPubIDs) {
         
         int tAuthorID = pAuthorList.size();
         
         this.setAuthorList(tAuthorID, sCPF, sName);
     }
     
-    public void setPublicationList(int sID, String sTitle, int sPageStart, int sPageEnd, int sPublishYear) {
+    public void setPublicationList(int sID, String sTitle, int sPageStart, int sPageEnd, int sPublishYear, int[] sAuthors) {
         
-        Publication tPublication = new Publication(sID, sTitle, sPageStart, sPageEnd, sPublishYear);
+        Author tAuthors[] = new Author[sAuthors.length];
+        
+        for(int tIX = 0; tIX < sAuthors.length; tIX++) {
+            tAuthors[tIX] = pAuthorList.get(sAuthors[tIX]);
+        }
+        
+        Publication tPublication = new Publication(sID, sTitle, sPageStart, sPageEnd, sPublishYear, tAuthors);
         
         pPublicationList.add(tPublication);
     }
     
-    public void addPublicationList(String sTitle, int sPageStart, int sPageEnd, int sPublishYear) {
+    public void addPublicationList(String sTitle, int sPageStart, int sPageEnd, int sPublishYear, int[] sAuthors) {
         
         int tPublicationID = pPublicationList.size();
         
-        this.setPublicationList(tPublicationID, sTitle, sPageStart, sPageEnd, sPublishYear);
+        this.setPublicationList(tPublicationID, sTitle, sPageStart, sPageEnd, sPublishYear, sAuthors);
     }
     
     public String getPublicationList(String sTitle) {
+            
+        String teste = "";
         
-        return sTitle;
+        for(int tIX = 0; tIX < pPublicationList.size(); tIX++) {
+            
+            Publication tPublication = pPublicationList.get(tIX);
+            
+            String tTitle = tPublication.getTitle();
+            
+            if(tTitle.indexOf(sTitle) > -1){
+            
+                Author tAuthors[] = new Author[tPublication.getAuthorsCount()];
+                    
+                tAuthors = tPublication.getAuthors();
+                
+                teste = teste + ", " + tTitle + "(";
+                
+                 for(int tIXAut = 0; tIXAut < tAuthors.length; tIXAut++) {
+                     teste = teste + ", " + tAuthors[tIXAut].getName();
+                 }
+                 
+                 teste = teste + ")";
+            }
+            
+        }
+        
+        return teste;
     }
     
     public Publications() {
@@ -69,12 +100,15 @@ public class Publications {
         this.setAuthorList(15, "15246578989", "Thiago, R. M.");
         this.setAuthorList(16, "16246578989", "da Silva, V. T.");
         
-        this.setPublicationList(0, "A cloud-based architecture for the internet of things targeting industrial engine remote monitoring.", 1, 6, 2015);
-        this.setPublicationList(1, "Implementation of aspect-oriented business process models with web services.", 1, 24, 2020);
-        this.setPublicationList(2, "Researchops: The case for devops in scientific applications.", 1398, 1404, 2015);
-        this.setPublicationList(3, "Analysis of tools for rest contract specification in swagger/openapi.", 201, 208, 2020);
+        int[] tAuthorPub1 = {1, 2, 3, 4, 5, 6, 7};
+        int[] tAuthorPub2 = {8, 9, 10, 2};
+        int[] tAuthorPub3 = {11, 2, 12};
+        int[] tAuthorPub4 = {13, 2, 14, 15, 16};
         
-        
+        this.setPublicationList(0, "A cloud-based architecture for the internet of things targeting industrial engine remote monitoring.", 1, 6, 2015, tAuthorPub1);
+        this.setPublicationList(1, "Implementation of aspect-oriented business process models with web services.", 1, 24, 2020, tAuthorPub2);
+        this.setPublicationList(2, "Researchops: The case for devops in scientific applications.", 1398, 1404, 2015, tAuthorPub3);
+        this.setPublicationList(3, "Analysis of tools for rest contract specification in swagger/openapi.", 201, 208, 2020, tAuthorPub4);
 
     }
     

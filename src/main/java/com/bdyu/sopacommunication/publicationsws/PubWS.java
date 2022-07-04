@@ -4,6 +4,7 @@
  */
 package com.bdyu.sopacommunication.publicationsws;
 
+import com.engsoft.arqsoft.trab1.Publications;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -16,19 +17,21 @@ import javax.jws.WebParam;
 public class PubWS {
 
     /**
-     * This is a sample web service operation
+     * Metodo para recuperar as informaçoes de publicaçao atraves de uma
+     * pesquisa pela parte do titulo fornecida.
      */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
+    @WebMethod(operationName = "getPublicationsFromTitle")
+    public String getPublicationsFromTitle(@WebParam(name = "sTitle") String sTitle) {
 
         try { // Call Web Service Operation
             com.engsoft.arqsoft.trab1.Publications tPublications = new com.engsoft.arqsoft.trab1.Publications();
             
-            return "Hello";
+            return tPublications.getPublicationList(sTitle);
             //return "Hello " + tPublications.getPublicationList("testeTitulo") + " !";
             
         } catch (Exception ex) {
             // TODO handle custom exceptions here
+        
         }
         
         return "Erro";

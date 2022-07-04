@@ -16,7 +16,7 @@ public class Publication {
     private int pPageEnd;
     private int pPublishYear;
     
-    private int[] pAuthors;
+    private Author[] pAuthors;
 
     public int getID() {
         return this.pID;
@@ -58,22 +58,27 @@ public class Publication {
         this.pPublishYear = sPublishYear;
     }
 
-    public void addAuthor(int sAuthorID) {
-        
-        int tCountAuthor;
-        
-        tCountAuthor = this.pAuthors.length;
-        
-        this.pAuthors[tCountAuthor] = sAuthorID;
+    public Author[] getAuthors() {
+        return this.pAuthors;
+    }
+
+    public int getAuthorsCount() {
+        return this.pAuthors.length;
     }
     
-    Publication(int sID, String sTitle, int sPageStart, int sPageEnd, int sPublishYear) {
+    Publication(int sID, String sTitle, int sPageStart, int sPageEnd, int sPublishYear, Author[] sAuthors) {
         
         this.pID = sID;
         this.pTitle = sTitle;
         this.pPageStart = sPageStart;
         this.pPageEnd = sPageEnd;
         this.pPublishYear = sPublishYear;
+        
+        this.pAuthors = new Author[sAuthors.length];
+        
+        for(int tIX = 0; tIX < sAuthors.length; tIX++) {
+            this.pAuthors[tIX] = sAuthors[tIX];
+        }
     }
     
 }
