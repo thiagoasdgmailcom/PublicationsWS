@@ -4,7 +4,7 @@
  */
 package com.bdyu.sopacommunication.publicationsws;
 
-import com.engsoft.arqsoft.trab1.Publications;
+import com.engsoft.arqsoft.trab1.*;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
