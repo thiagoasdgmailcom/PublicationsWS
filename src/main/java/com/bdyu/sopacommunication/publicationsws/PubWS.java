@@ -19,14 +19,15 @@ public class PubWS {
     /**
      * Metodo para recuperar as informaçoes de publicaçao atraves de uma
      * pesquisa pela parte do titulo fornecida.
+     * Retorna as publicações, com seus autores em forma de texto.
      */
-    @WebMethod(operationName = "getPublicationsFromTitle")
-    public String getPublicationsFromTitle(@WebParam(name = "sTitle") String sTitle) {
+    @WebMethod(operationName = "getPublicationsStringFromTitle")
+    public String getPublicationsStringFromTitle(@WebParam(name = "sTitle") String sTitle) {
 
         try { // Call Web Service Operation
             com.engsoft.arqsoft.trab1.Publications tPublications = new com.engsoft.arqsoft.trab1.Publications();
             
-            return tPublications.getPublicationList(sTitle);
+            return tPublications.getPublicationListString(sTitle);
             //return "Hello " + tPublications.getPublicationList("testeTitulo") + " !";
             
         } catch (Exception ex) {
@@ -35,5 +36,27 @@ public class PubWS {
         }
         
         return "Erro";
+    }
+
+    /**
+     * Metodo para recuperar as informaçoes de publicaçao atraves de uma
+     * pesquisa pela parte do titulo fornecida.
+     * Retorna um array com a classe instanciada da publicação.
+     */
+    @WebMethod(operationName = "getPublicationsFromTitle")
+    public com.engsoft.arqsoft.trab1.Publication[] getPublicationsFromTitle(@WebParam(name = "sTitle") String sTitle) {
+
+        try { // Call Web Service Operation
+            com.engsoft.arqsoft.trab1.Publications tPublications = new com.engsoft.arqsoft.trab1.Publications();
+            
+            return tPublications.getPublications(sTitle);
+            //return "Hello " + tPublications.getPublicationList("testeTitulo") + " !";
+            
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        
+        }
+        
+        return null;
     }
 }

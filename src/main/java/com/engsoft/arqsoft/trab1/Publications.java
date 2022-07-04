@@ -47,7 +47,18 @@ public class Publications {
         this.setPublicationList(tPublicationID, sTitle, sPageStart, sPageEnd, sPublishYear, sAuthors);
     }
     
-    public String getPublicationList(String sTitle) {
+    public Publication[] getPublications(String sTitle) {
+        
+        Publication tPublications[] = new Publication[pPublicationList.size()];
+        
+        for(int tIX = 0; tIX < pPublicationList.size(); tIX++) {
+            tPublications[tIX] = pPublicationList.get(tIX);
+        }
+        
+        return tPublications;
+    }
+    
+    public String getPublicationListString(String sTitle) {
             
         String teste = "";
         
@@ -63,13 +74,17 @@ public class Publications {
                     
                 tAuthors = tPublication.getAuthors();
                 
-                teste = teste + ", " + tTitle + "(";
+                teste = teste + "\n";
                 
-                 for(int tIXAut = 0; tIXAut < tAuthors.length; tIXAut++) {
-                     teste = teste + ", " + tAuthors[tIXAut].getName();
-                 }
-                 
-                 teste = teste + ")";
+                for(int tIXAut = 0; tIXAut < tAuthors.length; tIXAut++) {
+                    teste = teste + tAuthors[tIXAut].getName() + ", ";
+                }
+                
+                teste = teste + ". " + tTitle + "";
+                teste = teste + "" + "(" + String.valueOf(tPublication.getPublishYear()) + ")";
+                teste = teste + ", pp. " + String.valueOf(tPublication.getPageStart()) + "-" + String.valueOf(tPublication.getPageEnd()) + ".";
+                
+                teste = teste + "\n";
             }
             
         }
