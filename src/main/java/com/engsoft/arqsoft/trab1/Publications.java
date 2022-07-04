@@ -127,6 +127,13 @@ public class Publications {
         return tResultString;
     }
     
+    public Author getAuthorByID(int sID) {
+        
+        Author tAuthor = pAuthorList.get(sID);
+        
+        return tAuthor;
+    }
+    
     public Publications() {
         
         pAuthorList = new ArrayList<Author>();

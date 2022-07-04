@@ -4,6 +4,9 @@
  */
 package com.engsoft.arqsoft.trab1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author thiago.diniz
@@ -16,7 +19,11 @@ public class Publication {
     private int pPageEnd;
     private int pPublishYear;
     
+    private int[] pAuthoIDs;
+    
     private Author[] pAuthors;
+    
+    public List<Author> pAuthorList;
 
     public int getID() {
         return this.pID;
@@ -65,8 +72,14 @@ public class Publication {
     public int getAuthorsCount() {
         return this.pAuthors.length;
     }
+
+    public List<Author> getAuthorsList() {
+        return this.pAuthorList;
+    }
     
     Publication(int sID, String sTitle, int sPageStart, int sPageEnd, int sPublishYear, Author[] sAuthors) {
+        
+        this.pAuthorList = new ArrayList<Author>();
         
         this.pID = sID;
         this.pTitle = sTitle;
@@ -78,6 +91,7 @@ public class Publication {
         
         for(int tIX = 0; tIX < sAuthors.length; tIX++) {
             this.pAuthors[tIX] = sAuthors[tIX];
+            this.pAuthorList.add(sAuthors[tIX]);
         }
     }
     

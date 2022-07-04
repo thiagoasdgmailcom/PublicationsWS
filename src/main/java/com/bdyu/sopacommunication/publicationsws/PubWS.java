@@ -4,7 +4,10 @@
  */
 package com.bdyu.sopacommunication.publicationsws;
 
-import com.engsoft.arqsoft.trab1.*;
+import com.engsoft.arqsoft.trab1.Publication;
+import com.engsoft.arqsoft.trab1.Publications;
+import com.engsoft.arqsoft.trab1.Author;
+
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -82,5 +85,27 @@ public class PubWS {
         }
         
         return 0;
+    }
+
+    /**
+     * Metodo para recuperar as informaçoes de publicaçao atraves de uma
+     * pesquisa pela parte do titulo fornecida.
+     * Retorna um array com a classe instanciada da publicação.
+     */
+    @WebMethod(operationName = "getAuthorByID")
+    public com.engsoft.arqsoft.trab1.Author getAuthorByID(@WebParam(name = "sID") int sID) {
+
+        try { // Call Web Service Operation
+            com.engsoft.arqsoft.trab1.Publications tPublications = new com.engsoft.arqsoft.trab1.Publications();
+            
+            return tPublications.getAuthorByID(sID);
+            //return "Hello " + tPublications.getPublicationList("testeTitulo") + " !";
+            
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        
+        }
+        
+        return null;
     }
 }
