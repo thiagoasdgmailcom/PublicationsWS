@@ -59,4 +59,28 @@ public class PubWS {
         
         return null;
     }
+
+    /**
+     * Metodo para recuperar a quantidade de publicações atraves de uma
+     * pesquisa pela parte do titulo fornecida.
+     * Retorna um inteiro com a quantidade de publicações encontradas.
+     */
+    @WebMethod(operationName = "getPublicationsCountFromTitle")
+    public int getPublicationsCountFromTitle(@WebParam(name = "sTitle") String sTitle) {
+
+        try { // Call Web Service Operation
+            com.engsoft.arqsoft.trab1.Publications tPublications = new com.engsoft.arqsoft.trab1.Publications();
+            
+            tPublications.getPublications(sTitle);
+            
+            return tPublications.getPublicationsCount(sTitle);
+            //return "Hello " + tPublications.getPublicationList("testeTitulo") + " !";
+            
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        
+        }
+        
+        return 0;
+    }
 }

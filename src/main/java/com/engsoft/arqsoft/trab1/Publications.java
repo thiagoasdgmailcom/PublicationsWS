@@ -49,18 +49,53 @@ public class Publications {
     
     public Publication[] getPublications(String sTitle) {
         
-        Publication tPublications[] = new Publication[pPublicationList.size()];
+        List<Publication> tPublicationListResultSearch;
+        
+        tPublicationListResultSearch = new ArrayList<Publication>();
         
         for(int tIX = 0; tIX < pPublicationList.size(); tIX++) {
-            tPublications[tIX] = pPublicationList.get(tIX);
+            
+            Publication tPublication = pPublicationList.get(tIX);
+            
+            String tTitle = tPublication.getTitle();
+            
+            if(tTitle.indexOf(sTitle) > -1){
+                tPublicationListResultSearch.add(tPublication);
+            }
+        }
+        
+        Publication tPublications[] = new Publication[tPublicationListResultSearch.size()];
+        
+        for(int tIX = 0; tIX < tPublicationListResultSearch.size(); tIX++) {
+            tPublications[tIX] = tPublicationListResultSearch.get(tIX);
         }
         
         return tPublications;
     }
     
+    public int getPublicationsCount(String sTitle) {
+        
+        List<Publication> tPublicationListResultSearch;
+        
+        tPublicationListResultSearch = new ArrayList<Publication>();
+        
+        for(int tIX = 0; tIX < pPublicationList.size(); tIX++) {
+            
+            Publication tPublication = pPublicationList.get(tIX);
+            
+            String tTitle = tPublication.getTitle();
+            
+            if(tTitle.indexOf(sTitle) > -1){
+                tPublicationListResultSearch.add(tPublication);
+            }
+        }
+        
+        return tPublicationListResultSearch.size();
+    }
+    
     public String getPublicationListString(String sTitle) {
             
-        String teste = "";
+        String tResultString = "";
         
         for(int tIX = 0; tIX < pPublicationList.size(); tIX++) {
             
@@ -74,22 +109,22 @@ public class Publications {
                     
                 tAuthors = tPublication.getAuthors();
                 
-                teste = teste + "\n";
+                tResultString = tResultString + "\n";
                 
                 for(int tIXAut = 0; tIXAut < tAuthors.length; tIXAut++) {
-                    teste = teste + tAuthors[tIXAut].getName() + ", ";
+                    tResultString = tResultString + tAuthors[tIXAut].getName() + ", ";
                 }
                 
-                teste = teste + ". " + tTitle + "";
-                teste = teste + "" + "(" + String.valueOf(tPublication.getPublishYear()) + ")";
-                teste = teste + ", pp. " + String.valueOf(tPublication.getPageStart()) + "-" + String.valueOf(tPublication.getPageEnd()) + ".";
+                tResultString = tResultString + ". " + tTitle + "";
+                tResultString = tResultString + "" + "(" + String.valueOf(tPublication.getPublishYear()) + ")";
+                tResultString = tResultString + ", pp. " + String.valueOf(tPublication.getPageStart()) + "-" + String.valueOf(tPublication.getPageEnd()) + ".";
                 
-                teste = teste + "\n";
+                tResultString = tResultString + "\n";
             }
             
         }
         
-        return teste;
+        return tResultString;
     }
     
     public Publications() {
