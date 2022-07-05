@@ -139,7 +139,7 @@ public class Publications {
         pAuthorList = new ArrayList<Author>();
         pPublicationList = new ArrayList<Publication>();
         
-        this.setAuthorList(0, "13246578989", "Diniz, T. A. S.");
+        this.setAuthorList(0, "13246578989", "Dinizz, T. A. S.");
         this.setAuthorList(1, "13246578989", "da Silva, A. F.");
         this.setAuthorList(2, "23246578989", "Azevedo, L. G.");
         this.setAuthorList(3, "33246578989", "Ohta, R. L.");
